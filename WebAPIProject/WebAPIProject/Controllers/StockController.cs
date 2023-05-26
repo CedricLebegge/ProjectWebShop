@@ -39,16 +39,16 @@ namespace WebAPIProject.Controllers
             return CreatedAtRoute("DefaultApi", new { id = stockItem.SerialNumber }, stockItem);
         }
 
-        // PUT: api/Stock/{id}
+        // PUT: api/Stock/{serialNumber}
         [HttpPut]
-        [Route("{id}")]
-        public IActionResult PutStockItem(int id, StockItem stockItem)
+        [Route("{serialNumber}")]
+        public IActionResult PutStockItem(int serialNumber, StockItem stockItem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (id != stockItem.SerialNumber)
+            if (serialNumber != stockItem.SerialNumber)
             {
                 return BadRequest();
             }
