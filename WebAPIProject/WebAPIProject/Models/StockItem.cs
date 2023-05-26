@@ -1,9 +1,13 @@
-﻿namespace WebAPIProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebAPIProject.Models
 {
     public class StockItem
     {
-        public int Id { get; set; }
-        public string? SerialNumber { get; set; }
+        [Key]
+        public int SerialNumber { get; set; }
         public int Amount { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
     }
 }
