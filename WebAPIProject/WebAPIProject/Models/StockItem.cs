@@ -5,9 +5,20 @@ namespace WebAPIProject.Models
     public class StockItem
     {
         [Key]
-        public int SerialNumber { get; set; }
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Image { get; set; }
+
+        public decimal Price { get; set; }
+
+        public Metal Metal { get; set; }
+
+        public decimal Purity { get; set; }
+
+        public decimal Weight { get; set; }
+
         public int Amount { get; set; }
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace WebAPIProject.Controllers
         [Route("{serialNumber}")]
         public IActionResult GetStockItem(int serialNumber)
         {
-            var stockItem = db.Stock.FirstOrDefault(s => s.SerialNumber == serialNumber);
+            var stockItem = db.Stock.FirstOrDefault(s => s.Id == serialNumber);
             if (stockItem == null)
             {
                 return NotFound();
@@ -45,11 +45,11 @@ namespace WebAPIProject.Controllers
 
             // Generate a random serial number
             var random = new Random();
-            stockItem.SerialNumber = random.Next(100000, 999999);
+            stockItem.Id = random.Next(100000, 999999);
 
             db.Stock.Add(stockItem);
             db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = stockItem.SerialNumber }, stockItem);
+            return CreatedAtRoute("DefaultApi", new { id = stockItem.Id }, stockItem);
         }
 
         // PUT: api/Stock/{serialNumber}
@@ -62,18 +62,23 @@ namespace WebAPIProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            var existingStockItem = db.Stock.FirstOrDefault(s => s.SerialNumber == serialNumber);
+            var existingStockItem = db.Stock.FirstOrDefault(s => s.Id == serialNumber);
             if (existingStockItem == null)
             {
                 return NotFound();
             }
 
+            existingStockItem.Name = stockItem.Name;
+            existingStockItem.Image = stockItem.Image;
+            existingStockItem.Price = stockItem.Price;
+            existingStockItem.Metal = stockItem.Metal;
+            existingStockItem.Purity = stockItem.Purity;
+            existingStockItem.Weight = stockItem.Weight;
             existingStockItem.Amount = stockItem.Amount;
-            existingStockItem.ProductName = stockItem.ProductName;
-            existingStockItem.ProductDescription = stockItem.ProductDescription;
 
             db.Entry(existingStockItem).State = EntityState.Modified;
             db.SaveChanges();
+
             return NoContent();
         }
     }

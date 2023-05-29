@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIProject", "WebAPIProject\WebAPIProject.csproj", "{D29F39E7-3F2B-4147-9E63-EBEB397B9D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIProject", "WebAPIProject\WebAPIProject.csproj", "{D29F39E7-3F2B-4147-9E63-EBEB397B9D5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServer", "..\..\..\OneDrive\Bureaublad\BlazorServer\BlazorServer\BlazorServer.csproj", "{C552BEAD-ABB0-4B25-A761-3E4048EEEB11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D29F39E7-3F2B-4147-9E63-EBEB397B9D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D29F39E7-3F2B-4147-9E63-EBEB397B9D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D29F39E7-3F2B-4147-9E63-EBEB397B9D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C552BEAD-ABB0-4B25-A761-3E4048EEEB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C552BEAD-ABB0-4B25-A761-3E4048EEEB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C552BEAD-ABB0-4B25-A761-3E4048EEEB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C552BEAD-ABB0-4B25-A761-3E4048EEEB11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

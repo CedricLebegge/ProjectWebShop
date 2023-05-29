@@ -8,7 +8,7 @@ namespace WebAPIProject.Data
         public DbSet<StockItem> Stock { get; set; }
 
         public StockDbContext() : base(new DbContextOptionsBuilder<StockDbContext>()
-       .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=WebShopDB;Integrated Security=True;")
+       .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MetaL;Integrated Security=True;")
        .Options)
         {
             // configureer database provider en andere opties hier
