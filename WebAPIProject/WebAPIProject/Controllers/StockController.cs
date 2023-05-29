@@ -12,6 +12,14 @@ namespace WebAPIProject.Controllers
     {
         private StockDbContext db = new StockDbContext();
 
+        // GETALL: api/Stock
+        [HttpGet]
+        public IActionResult GetAllStockItems()
+        {
+            List<StockItem> stockItems = db.Stock.ToList();
+            return Ok(stockItems);
+        }
+
         // GET: api/Stock/{serialNumber}
         [HttpGet]
         [Route("{serialNumber}")]
@@ -34,6 +42,11 @@ namespace WebAPIProject.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            // Generate a random serial number
+            var random = new Random();
+            stockItem.SerialNumber = random.Next(100000, 999999);
+
             db.Stock.Add(stockItem);
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = stockItem.SerialNumber }, stockItem);
@@ -48,13 +61,20 @@ namespace WebAPIProject.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (serialNumber != stockItem.SerialNumber)
+
+            var existingStockItem = db.Stock.FirstOrDefault(s => s.SerialNumber == serialNumber);
+            if (existingStockItem == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-            db.Entry(stockItem).State = EntityState.Modified;
+
+            existingStockItem.Amount = stockItem.Amount;
+            existingStockItem.ProductName = stockItem.ProductName;
+            existingStockItem.ProductDescription = stockItem.ProductDescription;
+
+            db.Entry(existingStockItem).State = EntityState.Modified;
             db.SaveChanges();
-            return StatusCode((int)HttpStatusCode.NoContent);
+            return NoContent();
         }
     }
 }
